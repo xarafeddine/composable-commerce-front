@@ -1,19 +1,31 @@
 import Link from "next/link";
-import { Suspense } from "react";
+import styles from "./navbar.module.scss";
 
-const li_style = "text-xl font-bold";
+
 export default async function Navbar() {
   return (
-    <ul className="w-full bg-blue-950 flex flex-row gap-10 p-10 justify-center">
-      <li className={li_style}>
-        <Link href="/">home</Link>
-      </li>
-      <li className={li_style}>
-        <Link href="/products">products</Link>
-      </li>
-      <li className={li_style}>
-        <Link href="/about">about</Link>
-      </li>
-    </ul>
+    <header className={styles.header}>
+      <h1 className={styles.logo}>Logo</h1>
+      <input type="checkbox" id="nav-toggle" className={styles["nav-toggle"]} />
+      <nav>
+        <ul>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="#">About</Link>
+          </li>
+          <li>
+            <Link href="/products">Products</Link>
+          </li>
+          <li>
+            <Link href="#">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+      <label htmlFor="nav-toggle" className={styles["nav-toggle-label"]}>
+        <span></span>
+      </label>
+    </header>
   );
 }

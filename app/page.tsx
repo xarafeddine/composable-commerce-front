@@ -1,4 +1,5 @@
 import Card from "@/components/product/card";
+import ProductsList from "@/components/product/list";
 import { getProducts } from "@/lib/contentfull";
 import { Product } from "@/lib/models";
 import Image from "next/image";
@@ -8,18 +9,12 @@ export default async function Home() {
 
   return (
     <>
-      <div className="flex flex-col gap-10 justify-center items-center">
-        <h1 className="text-6xl mb-10 ">Store</h1>
-        <main>
-          <div className="flex gap-5 m-10">
-            {products.map(({ fields }: Product) => {
-              if (fields.image) {
-                return <Card key={fields.id} product={fields} />;
-              }
-            })}
-          </div>
-        </main>
+      <div className="content">
+        <h1>E-commerce platform</h1>
       </div>
+
+      <h1 className="text-center mt-10">Our Products</h1>
+      <ProductsList products={products} />
     </>
   );
 }

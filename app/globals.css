@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -29,4 +30,27 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #222;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+}
+
+.content {
+  height: 100vh;
+  background-image: url(https://etimg.etb2bimg.com/photo/76159933.cms);
+  background-color: #333;
+  background-blend-mode: multiply;
+  background-size: cover;
+  display: grid;
+  place-items: center;
 }
