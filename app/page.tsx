@@ -1,20 +1,29 @@
-import Card from "@/components/product/card";
+import FooterBanner from "@/components/banner/FooterBanner";
+import HeroBanner from "@/components/banner/HeroBanner";
 import ProductsList from "@/components/product/list";
-import { getProducts } from "@/lib/contentfull";
-import { Product } from "@/lib/models";
-import Image from "next/image";
+import { getBanner, getProducts } from "@/lib/client";
+import useProductsStore from "@/lib/store";
 
 export default async function Home() {
   const products = await getProducts();
-
+  const bannerData = await getBanner();
+  const featuredProducts = products.filter(
+    (prod) => prod.category === "Featured Products"
+  );
   return (
-    <>
-      <div className="content">
-        <h1>E-commerce platform</h1>
+    <div>
+      <HeroBanner heroBanner={bannerData} />
+      <div className="products-heading">
+        <h2>Best Seller Products</h2>
+        <p>speaker There are many variations passages</p>
       </div>
 
-      <h1 className="text-center mt-10">Our Products</h1>
-      <ProductsList products={products} />
-    </>
+      <div className="p-20 text-center">
+        <h2 className="text-xl font-bold mb-10">Featured Products</h2>
+        <ProductsList products={featuredProducts} />
+      </div>
+
+      <FooterBanner footerBanner={bannerData} />
+    </div>
   );
 }
