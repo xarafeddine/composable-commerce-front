@@ -2,7 +2,7 @@ import FooterBanner from "@/components/banner/FooterBanner";
 import HeroBanner from "@/components/banner/HeroBanner";
 import ProductsList from "@/components/product/list";
 import { getBanner, getProducts } from "@/lib/client";
-import useProductsStore from "@/lib/store";
+
 
 export default async function Home() {
   const products = await getProducts();
