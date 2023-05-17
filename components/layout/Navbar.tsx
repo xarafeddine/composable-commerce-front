@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
+import { AiOutlineShopping } from "react-icons/ai";
+import useProductsStore from "@/lib/store";
+import Cart from "../product/Cart";
 const Navbar = () => {
-  // const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { showCart, setShowCart, getTotalQuantities } = useProductsStore();
 
   return (
     <div className="navbar-container">
@@ -12,7 +16,7 @@ const Navbar = () => {
       <ul className={styles.routes}>
         <li>
           <p className="active">
-            <Link href="/products">Products</Link>
+            <Link href="/product">Products</Link>
           </p>
         </li>
 
@@ -29,12 +33,16 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
+      <button
+        type="button"
+        className="cart-icon"
+        onClick={() => setShowCart(true)}
+      >
         <AiOutlineShopping />
-        <span className="cart-item-qty">{totalQuantities}</span>
+        <span className="cart-item-qty">{getTotalQuantities()}</span>
       </button>
 
-      {showCart && <Cart />} */}
+      {showCart && <Cart />}
     </div>
   );
 };

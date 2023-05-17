@@ -10,13 +10,16 @@ export interface ProductState {
   productsList: Product[];
   categories: string[];
   cart: cartItem[];
+  showCart: boolean;
+  getTotalQuantities: () => number;
+  setShowCart: (showCart: boolean) => void;
   fetchProducts: () => void;
   addToCart: (item: cartItem) => void;
   removeFromCart: (id: number) => void;
   updateProducts: (prod: Product[]) => void;
   updateCart: (tem: cartItem) => void;
 }
-export const useProductsStore = create<ProductState>()((set) => ({
+export const useProductsStore = create<ProductState>()((set, get) => ({
   productsList: INITIAL_PRODUCTS.map(
     (prod) =>
       ({
@@ -33,6 +36,18 @@ export const useProductsStore = create<ProductState>()((set) => ({
   }, []),
 
   cart: [],
+  showCart: false,
+  setShowCart: (showCart: boolean) => {
+    return set(() => {
+      return { showCart };
+    });
+  },
+
+  getTotalQuantities: () => {
+    return get().cart.reduce((accu, curr) => {
+      return accu + curr.quantity;
+    }, 0);
+  },
 
   fetchProducts: () => {
     getProducts().then((prods) => {

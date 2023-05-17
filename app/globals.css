@@ -31,7 +31,8 @@ a {
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   margin: 6px 18px;
   position: relative;
 }
@@ -89,7 +90,8 @@ span.text-red {
 }
 .cart-item-qty {
   position: absolute;
-  right: -8px;
+  right: -10px;
+  top: -10px;
   font-size: 12px;
   color: #eee;
   background-color: #f02d34;
@@ -104,7 +106,7 @@ span.text-red {
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
 }
 .product-card {

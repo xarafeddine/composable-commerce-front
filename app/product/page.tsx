@@ -5,12 +5,16 @@ import { getProducts } from "@/lib/client";
 import styles from "./productsList.module.css";
 import useProductsStore from "@/lib/store";
 
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Product } from "@/lib/models";
 import { useRouter } from "next/router";
 
 const ProductsPage = () => {
   const { productsList, categories } = useProductsStore((state) => state);
+
+  const [searchText, setSearchText] = useState("");
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout>();
+  const [searchedResults, setSearchedResults] = useState(productsList);
 
   // const router = useRouter();
   const [filteredProducts, setFiltredProducts] = useState(productsList);
@@ -61,17 +65,48 @@ const ProductsPage = () => {
     return filtered;
   };
 
+  const filterProducts = (searchedText: string) => {
+    const regex = new RegExp(searchedText, "i"); // 'i' flag for case-insensitive search
+    return productsList.filter((prod) => regex.test(prod.title));
+  };
+
+  const handleSearchChange = (e: any) => {
+    clearTimeout(searchTimeout);
+    setSearchText(e.target.value);
+    const timeout = setTimeout(() => {
+      const searchResult = filterProducts(e.target.value);
+      setSearchedResults(searchResult);
+    }, 500);
+    // debounce method
+    setSearchTimeout(timeout);
+  };
+
   useEffect(() => {
-    setFiltredProducts(filter(productsList, filterParams));
-  }, [filterParams, productsList]);
+    setFiltredProducts(filter(searchedResults, filterParams));
+  }, [filterParams, searchedResults]);
 
   return (
     <div className={styles["products-list"]}>
       <div className={styles["filters"]}>
-        <h2>Filters</h2>
+        <h2 className="font-bold text-lg">Filters:</h2>
+
+        <div className={styles["filter-group"]}>
+          <label>Search:</label>
+
+          <input
+            type="text"
+            name="search"
+            placeholder="Search for products..."
+            autoComplete="off"
+            value={searchText}
+            onChange={handleSearchChange}
+            className="w-full px-4 py-2 text-black"
+          />
+        </div>
         <div className={styles["filter-group"]}>
           <label>Category:</label>
           <select
+            className="w-full px-4 py-2 text-black"
             name="selectedCategory"
             onChange={changeFilterParams}
             value={filterParams.selectedCategory}
@@ -89,6 +124,7 @@ const ProductsPage = () => {
         <div className={styles["filter-group"]}>
           <label>Price:</label>
           <select
+            className="w-full px-4 py-2 text-black"
             name="selectedPrice"
             onChange={changeFilterParams}
             value={filterParams.selectedPrice}
@@ -102,6 +138,7 @@ const ProductsPage = () => {
         <div className={styles["filter-group"]}>
           <label>Rating:</label>
           <select
+            className="w-full px-4 py-2 text-black"
             name="selectedRating"
             onChange={changeFilterParams}
             value={filterParams.selectedRating}
@@ -115,7 +152,7 @@ const ProductsPage = () => {
         </div>
       </div>
       <div className={styles["products"]}>
-        <h2>Products List</h2>
+        <h2 className="font-bold text-lg">Products List</h2>
         <ProductsList products={filteredProducts} />
       </div>
     </div>

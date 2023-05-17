@@ -3,7 +3,6 @@ import HeroBanner from "@/components/banner/HeroBanner";
 import ProductsList from "@/components/product/list";
 import { getBanner, getProducts } from "@/lib/client";
 
-
 export default async function Home() {
   const products = await getProducts();
   const bannerData = await getBanner();
@@ -11,7 +10,7 @@ export default async function Home() {
     (prod) => prod.category === "Featured Products"
   );
   return (
-    <div>
+    <div className="py-20">
       <HeroBanner heroBanner={bannerData} />
       <div className="products-heading">
         <h2>Best Seller Products</h2>
