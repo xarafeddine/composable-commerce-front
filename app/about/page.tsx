@@ -1,11 +1,7 @@
-import MoreProducts from "@/components/product/MoreProducts";
+import React from "react";
 
-const About = () => {
-  return (
-    <>
-      <MoreProducts />
-    </>
-  );
+const page = () => {
+  return <div>page</div>;
 };
 
-export default About;
+export default page;
