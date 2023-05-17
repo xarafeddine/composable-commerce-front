@@ -63,7 +63,6 @@ const ProductsPage = () => {
 
   useEffect(() => {
     setFiltredProducts(filter(productsList, filterParams));
-    console.log(filteredProducts);
   }, [filterParams, productsList]);
 
   return (
