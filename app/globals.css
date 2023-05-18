@@ -423,7 +423,7 @@ span.text-red {
   background-color: #ebebeb;
 
   width: 400px;
-  height: 400px;
+  height: auto;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
@@ -521,7 +521,11 @@ span.text-red {
 }
 .quantity-desc {
   border: 1px solid gray;
+  border-radius: 5px;
   padding: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .quantity-desc span {
   font-size: 16px;
@@ -676,7 +680,7 @@ span.text-red {
   }
   .product-detail-container .product-detail-image {
     width: 350px;
-    height: 350px;
+    height: auto;
   }
   .cart-container {
     width: 415px;

@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Next.js",
@@ -19,7 +20,8 @@ export default function RootLayout({
           <header>
             <Navbar />
           </header>
-          <main className="main-container">{children}</main>
+          <main className="main-container py-10">{children}</main>
+          <Toaster />
           <footer>
             <Footer />
           </footer>

@@ -1,36 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiOutlineLeft,
-  AiOutlineShopping,
-} from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineShopping } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 
 import useProductsStore from "@/lib/store";
-import ProductsList from "../list";
+
 import { Product } from "@/lib/models";
+import QtyHandler from "./QtyHandler";
 
 // import getStripe from "../lib/getStripe";
 
 const Cart = () => {
-  //   const {
-  //     totalPrice,
-  //     totalQuantities,
-  //     cartItems,
-  //     setShowCart,
-  //     toggleCartItemQuanitity,
-  //     onRemove,
-  //   } = useStateContext();
-
   const {
     setShowCart,
     cart,
-    addToCart,
-    updateCart,
     removeFromCart,
     getTotalQuantities,
     productsList,
@@ -65,6 +50,7 @@ const Cart = () => {
     // toast.loading("Redirecting...");
     // stripe.redirectToCheckout({ sessionId: data.id });
   };
+  console.log(cart);
 
   return (
     <div className="cart-wrapper">
@@ -103,10 +89,10 @@ const Cart = () => {
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.title}</h5>
-                    <h4>${item.price}</h4>
+                    <h4>${item.price * item.quantity}</h4>
                   </div>
                   <div className="flex bottom">
-                    <div>
+                    {/* <div>
                       <p className="quantity-desc">
                         <span
                           className="minus"
@@ -137,7 +123,13 @@ const Cart = () => {
                           <AiOutlinePlus />
                         </span>
                       </p>
-                    </div>
+                    </div> */}
+                    <QtyHandler
+                      item={{
+                        productId: item.productId,
+                        quantity: item.quantity,
+                      }}
+                    />
                     <button
                       type="button"
                       className="remove-item"
