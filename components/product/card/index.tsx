@@ -1,4 +1,5 @@
 import { Product } from "@/lib/models";
+import Image from "next/image";
 import Link from "next/link";
 interface Props {
   product: Product;
@@ -9,7 +10,7 @@ const Card = ({ product: { image, title, slug, price } }: Props) => {
     <div>
       <Link href={`/product/${slug}`}>
         <div className="product-card">
-          <img
+          <Image
             src={image}
             width={250}
             height={250}

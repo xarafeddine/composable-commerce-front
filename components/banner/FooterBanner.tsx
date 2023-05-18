@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 interface props {
   footerBanner: any;
@@ -36,7 +37,13 @@ const FooterBanner = ({
           </Link>
         </div>
 
-        <img src={image} className="footer-banner-image" />
+        <Image
+          width={500}
+          height={500}
+          src={image}
+          className="footer-banner-image"
+          alt={""}
+        />
       </div>
     </div>
   );

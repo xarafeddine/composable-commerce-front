@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const HeroBanner = ({ heroBanner }: any) => {
@@ -7,7 +8,9 @@ const HeroBanner = ({ heroBanner }: any) => {
         <p className="beats-solo">{heroBanner.smallText}</p>
         <h3>{heroBanner.midText}</h3>
         <h1>{heroBanner.largeText}</h1>
-        <img
+        <Image
+          width={500}
+          height={500}
           src={heroBanner.image}
           alt="headphones"
           className="hero-banner-image"

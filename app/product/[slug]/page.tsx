@@ -1,6 +1,7 @@
 import AddToCartBtn from "@/components/product/Cart/AddToCartBtn";
 import Card from "@/components/product/card";
 import { getProduct, getRelatedProducts } from "@/lib/client";
+import Image from "next/image";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export const dynamic = "force-dynamic";
@@ -23,7 +24,13 @@ const productDetails = async ({
       <div className="product-detail-container">
         <div className="w-fit">
           <div className="image-container">
-            <img src={product?.image} className="product-detail-image" />
+            <Image
+              width={500}
+              height={500}
+              src={product?.image}
+              className="product-detail-image"
+              alt={product?.title}
+            />
           </div>
           <div className="small-images-container">
             {/* {image?.map((item, i) => (

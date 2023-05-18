@@ -9,6 +9,7 @@ import useProductsStore from "@/lib/store";
 
 import { Product } from "@/lib/models";
 import QtyHandler from "./QtyHandler";
+import Image from "next/image";
 
 // import getStripe from "../lib/getStripe";
 
@@ -85,7 +86,13 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item.productId}>
-                <img src={item?.image} className="cart-product-image" />
+                <Image
+                  src={item?.image}
+                  width={180}
+                  height={150}
+                  className="cart-product-image"
+                  alt={item?.title}
+                />
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.title}</h5>
