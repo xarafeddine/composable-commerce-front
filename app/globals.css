@@ -432,6 +432,8 @@ span.text-red {
 }
 .small-images-container {
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
 }
@@ -447,7 +449,7 @@ span.text-red {
   background-color: #f02d34;
 }
 .reviews {
-  color: #f02d34;
+  color: #ffea00;
   margin-top: 10px;
   display: flex;
   gap: 5px;
@@ -468,7 +470,7 @@ span.text-red {
   font-weight: 700;
   font-size: 26px;
   margin-top: 30px;
-  color: #f02d34;
+  color: #5af02d;
 }
 .price .old-price,
 .product-price .old-price,
@@ -758,4 +760,52 @@ span.text-red {
     width: 300px;
     margin: auto;
   }
+}
+
+/* categories */
+
+.categories {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.categories h1 {
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.category {
+  cursor: pointer;
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #ccc;
+}
+
+.category img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.category h3 {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.category p {
+  margin: 10px 0;
 }

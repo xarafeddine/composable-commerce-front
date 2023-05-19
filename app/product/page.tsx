@@ -1,13 +1,14 @@
 "use client";
 
 import ProductsList from "@/components/product/list";
-import { getProducts } from "@/lib/client";
+import { useSearchParams } from "next/navigation";
 import styles from "./productsList.module.css";
 import useProductsStore from "@/lib/store";
 
-import { SetStateAction, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Product } from "@/lib/models";
-import { useRouter } from "next/router";
+
+import Loading from "./loading";
 
 const ProductsPage = () => {
   const { productsList, categories } = useProductsStore((state) => state);
@@ -16,10 +17,12 @@ const ProductsPage = () => {
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout>();
   const [searchedResults, setSearchedResults] = useState(productsList);
 
-  // const router = useRouter();
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
+  
   const [filteredProducts, setFiltredProducts] = useState(productsList);
   const [filterParams, setFilterParams] = useState({
-    selectedCategory: "",
+    selectedCategory: category || "",
     selectedPrice: "",
     selectedRating: "",
   });
@@ -153,7 +156,9 @@ const ProductsPage = () => {
       </div>
       <div className={styles["products"]}>
         <h2 className="font-bold text-lg">Products List</h2>
-        <ProductsList products={filteredProducts} />
+        <Suspense fallback={<Loading />}>
+          <ProductsList products={filteredProducts} />
+        </Suspense>
       </div>
     </div>
   );

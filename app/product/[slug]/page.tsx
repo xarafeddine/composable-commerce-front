@@ -1,7 +1,8 @@
 import AddToCartBtn from "@/components/product/Cart/AddToCartBtn";
+import ImageHandler from "@/components/product/ImageHandler";
 import Card from "@/components/product/card";
 import { getProduct, getRelatedProducts } from "@/lib/client";
-import Image from "next/image";
+
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export const dynamic = "force-dynamic";
@@ -18,11 +19,12 @@ const productDetails = async ({
 }) => {
   const product = await getProduct(slug);
   if (!product) return "product not found";
+
   const relatedProducts = getRelatedProducts(product.category);
   return (
     <div>
       <div className="product-detail-container">
-        <div className="w-fit">
+        {/* <div className="w-fit">
           <div className="image-container">
             <Image
               width={500}
@@ -33,18 +35,16 @@ const productDetails = async ({
             />
           </div>
           <div className="small-images-container">
-            {/* {image?.map((item, i) => (
-              <img
+            {images?.map((item, i) => (
+              <Image
                 key={i}
-                src={urlFor(item)}
-                className={
-                  i === index ? "small-image selected-image" : "small-image"
-                }
-                onMouseEnter={() => setIndex(i)}
-              />
-            ))} */}
+                src={item}
+                className={i === index ? "small-image selected-image" : "small-image"}
+                onMouseEnter={() => setIndex(i)} alt={""}              />
+            ))}
           </div>
-        </div>
+        </div> */}
+        <ImageHandler product={product} />
 
         <div className="product-detail-desc w-fit">
           <h1>{product?.title}</h1>
@@ -63,10 +63,10 @@ const productDetails = async ({
             </div>
             <p>(20)</p>
           </div>
-          <h4>Details: </h4>
-          <p>{product.details}</p>
           <p className="price">${product.price}</p>
 
+          <h4 className="font-bold">Details: </h4>
+          <p>{product.details}</p>
           <AddToCartBtn productId={product.id} />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Product } from "../models";
 import data from "../store/products.json";
 const slugify = (str: string) => {
   return str
@@ -29,6 +30,25 @@ export const getProduct = async (slug: string) => {
 export const getRelatedProducts = (category: string) => {
   const prods = getProducts();
   return prods.filter((prod) => prod.category === category);
+};
+
+export const getImages = (product: Product) => {
+  const prods = getProducts();
+  return prods
+    .filter((prod) => prod.title === product.title)
+    .slice(0, 5)
+    .map((prod) => prod.image);
+};
+
+export const getCategories = () => {
+  const prods = getProducts();
+
+  return prods.reduce((accu: string[], curr) => {
+    if (curr.category && !accu.includes(curr.category)) {
+      return [...accu, curr.category];
+    }
+    return accu;
+  }, []);
 };
 
 export const getBanner = async () => {
