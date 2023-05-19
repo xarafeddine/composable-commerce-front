@@ -68,7 +68,7 @@ const Cart = () => {
 
         {cartItems.length < 1 && (
           <div className="empty-cart">
-            <AiOutlineShopping size={150} />
+            <AiOutlineShopping size={100} />
             <h3>Your shopping bag is empty</h3>
             <Link href="/">
               <button
@@ -157,7 +157,7 @@ const Cart = () => {
             </div>
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
-                Pay with Stripe
+                Checkout
               </button>
             </div>
           </div>

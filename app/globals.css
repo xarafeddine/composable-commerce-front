@@ -323,6 +323,9 @@ span.text-red {
   color: #f02d34;
 }
 .empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 40px;
   text-align: center;
 }
