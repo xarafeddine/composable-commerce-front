@@ -14,7 +14,7 @@ const FooterBanner = ({
     desc,
     product,
     buttonText,
-    image,
+    image2,
   },
 }: props) => {
   return (
@@ -29,8 +29,8 @@ const FooterBanner = ({
         <div className="right">
           <p>{smallText}</p>
           <h3>{midText}</h3>
-          <div className="w-28">
-            <p>{desc.slice(0, 20)}</p>
+          <div className="w-[50%]">
+            <p>the AcousticX Pro Wireless Headphones</p>
           </div>
           <Link href={`/product/${product}`}>
             <button type="button">{buttonText}</button>
@@ -40,7 +40,7 @@ const FooterBanner = ({
         <Image
           width={500}
           height={500}
-          src={image}
+          src={image2}
           className="footer-banner-image"
           alt={""}
         />

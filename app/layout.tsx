@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { getCategories } from "@/lib/client";
 
 export const metadata = {
   title: "Next.js",
@@ -15,12 +16,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const categories = getCategories();
   return (
     <html lang="en">
       <body>
         <div className="layout">
           <header>
-            <Navbar />
+            <Navbar categories={categories} />
           </header>
           <Suspense fallback={<Loading />}>
             <main className="main-container py-10">{children}</main>

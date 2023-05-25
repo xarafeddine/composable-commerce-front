@@ -57,6 +57,7 @@ export const getBanner = async () => {
     midText: "Beast solo",
     largeText: "HEADPHONE",
     image: "/images/banner_03.webp",
+    image2: "/images/banner_04.webp",
     product: "2",
     buttonText: "SHOP NOW",
     desc: "Experience music like never before with our advanced Active Noise Cancellation (ANC) technology. Immerse yourself in crystal-clear audio, as the headphones intelligently detect and cancel out background noise, allowing you to focus on your favorite tracks or podcasts without any distractions.",
