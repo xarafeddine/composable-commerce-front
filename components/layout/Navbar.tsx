@@ -2,45 +2,58 @@
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import { AiOutlineShopping } from "react-icons/ai";
+import { BiLogIn } from "react-icons/bi";
 import useProductsStore from "@/lib/store";
 import Cart from "../product/Cart";
+import SearchIcon from "../icons/search";
 const Navbar = () => {
   const { showCart, setShowCart, getTotalQuantities } = useProductsStore();
 
   return (
     <div className="navbar-container">
-      <p className="bg-black text-white px-4 py-2 rounded font-bold text-2xl">
-        <Link href="/">STORE</Link>
-      </p>
-
       <ul className={styles.routes}>
         <li>
           <p className="active">
-            <Link href="/product">Products</Link>
+            <Link href="/">home</Link>
           </p>
         </li>
 
         <li>
           <p className="">
-            <Link href="/about">About</Link>
-          </p>
-        </li>
-
-        <li>
-          <p className="">
-            <Link href="/contact">Contact</Link>
+            <Link href="/product">All products</Link>
           </p>
         </li>
       </ul>
 
-      <button
-        type="button"
-        className="cart-icon"
-        onClick={() => setShowCart(true)}
+      <form
+        // onSubmit={onSubmit}
+        className="relative m-0 flex w-1/3 items-center border border-gray-200 bg-transparent p-0 dark:border-gray-500"
       >
-        <AiOutlineShopping />
-        <span className="cart-item-qty">{getTotalQuantities()}</span>
-      </button>
+        <input
+          type="text"
+          name="search"
+          placeholder="Search for products..."
+          autoComplete="off"
+          className="w-full px-4 py-2 text-black"
+        />
+        <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
+          <SearchIcon className="h-5" />
+        </div>
+      </form>
+
+      <div className="flex flex-row gap-4">
+        <Link href="/login">
+          <BiLogIn size="25px" color="gray" />
+        </Link>
+        <button
+          type="button"
+          className="cart-icon"
+          onClick={() => setShowCart(true)}
+        >
+          <AiOutlineShopping />
+          <span className="cart-item-qty">{getTotalQuantities()}</span>
+        </button>
+      </div>
 
       {showCart && <Cart />}
     </div>

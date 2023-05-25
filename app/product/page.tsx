@@ -8,7 +8,7 @@ import useProductsStore from "@/lib/store";
 import { Suspense, useEffect, useState } from "react";
 import { Product } from "@/lib/models";
 
-import Loading from "./loading";
+import Loading from "../loading";
 
 const ProductsPage = () => {
   const { productsList, categories } = useProductsStore((state) => state);
@@ -19,7 +19,7 @@ const ProductsPage = () => {
 
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
-  
+
   const [filteredProducts, setFiltredProducts] = useState(productsList);
   const [filterParams, setFilterParams] = useState({
     selectedCategory: category || "",
