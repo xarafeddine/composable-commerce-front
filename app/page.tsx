@@ -13,8 +13,22 @@ export default async function Home() {
     (prod) => prod.category === "Featured Products"
   );
   return (
-    <div className="py-20 px-5">
+    <div className="py-10 px-5">
       <HeroBanner heroBanner={bannerData} />
+      <div className="border border-gray-900  rounded py-5  m-20 flex flex-col justify-center items-center gap-5">
+        <h1 className="font-bold text-xl ">Categories:</h1>
+        <ul className="routes">
+          {categories.map((category, index) => {
+            return (
+              <li key={index}>
+                <p>
+                  <Link href={`/product?category=${category}`}>{category}</Link>
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
       <div className="p-10 text-center">
         <div className="products-heading">
