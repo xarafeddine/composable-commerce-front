@@ -21,7 +21,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     const { email, name } = session?.user!;
-    setCustomer({ ...customer, email, name });
+    if (email && name) setCustomer({ ...customer, email, name });
   }, []);
 
   const handleSubmit = () => {
