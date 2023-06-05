@@ -16,6 +16,7 @@ export interface ProductState {
   setShowCart: (showCart: boolean) => void;
   fetchProducts: () => void;
   addToCart: (id: number) => void;
+  setCartItems: (cart: cartItem[]) => void;
   removeFromCart: (id: number) => void;
   updateProducts: (prod: Product[]) => void;
   updateCart: (tem: cartItem) => void;
@@ -65,6 +66,12 @@ export const useProductsStore = create<ProductState>()((set, get) => ({
       quantity: itemInCart.quantity + 1,
     };
     get().updateCart(newCartitem);
+  },
+
+  setCartItems: (cart) => {
+    set(() => {
+      return { cart };
+    });
   },
 
   updateCart: (item) => {

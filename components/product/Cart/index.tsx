@@ -10,10 +10,14 @@ import useProductsStore from "@/lib/store";
 import { Product } from "@/lib/models";
 import QtyHandler from "./QtyHandler";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 // import getStripe from "../lib/getStripe";
 
 const Cart = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const {
     setShowCart,
     cart,
@@ -38,18 +42,9 @@ const Cart = () => {
   );
 
   const handleCheckout = async () => {
-    // const stripe = await getStripe();
-    // const response = await fetch("/api/stripe", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(cartItems),
-    // });
-    // if (response.statusCode === 500) return;
-    // const data = await response.json();
-    // toast.loading("Redirecting...");
-    // stripe.redirectToCheckout({ sessionId: data.id });
+    setShowCart(false);
+    if (status === "authenticated") return router.push("/checkout");
+    return toast.error("you are not authenticated");
   };
   console.log(cart);
 
@@ -86,7 +81,7 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item.productId}>
-                <Image
+                <img
                   src={item?.image}
                   width={180}
                   height={150}

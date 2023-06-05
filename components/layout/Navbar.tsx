@@ -2,26 +2,28 @@
 import Link from "next/link";
 
 import { AiOutlineShopping } from "react-icons/ai";
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
 import useProductsStore from "@/lib/store";
 import Cart from "../product/Cart";
 import SearchIcon from "../icons/search";
+import { useSession } from "next-auth/react";
+import { SignInButton, SignOutButton } from "../auth/buttons";
+
 const Navbar = () => {
   const { showCart, setShowCart, getTotalQuantities } = useProductsStore();
+  const { data: session, status } = useSession();
+
+  console.log(session, status);
 
   return (
     <div className="navbar-container">
-      <ul className="routes">
-        <li>
-          <p className="active">
-            <Link href="/">home</Link>
-          </p>
+      <ul className="flex felx-row gap-10">
+        <li className="hover:font-bold">
+          <Link href="/">HOME</Link>
         </li>
 
-        <li>
-          <p className="">
-            <Link href="/product">All products</Link>
-          </p>
+        <li className="hover:font-bold">
+          <Link href="/product">All products</Link>
         </li>
       </ul>
 
@@ -42,9 +44,20 @@ const Navbar = () => {
       </form>
 
       <div className="flex flex-row gap-4">
-        <Link href="/login">
+        {/* <Link href="/login">
           <BiLogIn size="25px" color="gray" />
-        </Link>
+        </Link> */}
+
+        <SignInButton>
+          <BiLogIn size="25px" color="green" />
+        </SignInButton>
+
+        {status === "authenticated" && (
+          <SignOutButton>
+            <BiLogOut size="25px" color="red" />
+          </SignOutButton>
+        )}
+
         <button
           type="button"
           className="cart-icon"
@@ -53,7 +66,6 @@ const Navbar = () => {
           <AiOutlineShopping />
           <span className="cart-item-qty">{getTotalQuantities()}</span>
         </button>
-
         {showCart && <Cart />}
       </div>
     </div>

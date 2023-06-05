@@ -16,7 +16,7 @@ export const getProducts = () => {
     rating: Math.round(Math.random() * 5),
     isInCart: false,
     slug: slugify(`${prod.title}_id_${prod.id}`),
-    details: `The TechPro Wireless Bluetooth Earbuds offer a seamless and hassle-free listening experience. With advanced Bluetooth 5.0 technology, you can effortlessly pair them with your smartphone, tablet, or any other Bluetooth-enabled device. Say goodbye to tangled wires and embrace the freedom of true wireless audio.
+    details: prod.details || `The TechPro Wireless Bluetooth Earbuds offer a seamless and hassle-free listening experience. With advanced Bluetooth 5.0 technology, you can effortlessly pair them with your smartphone, tablet, or any other Bluetooth-enabled device. Say goodbye to tangled wires and embrace the freedom of true wireless audio.
     Designed with comfort in mind, these earbuds feature a lightweight and ergonomic design that fits snugly in your ears. The soft silicone ear tips provide a secure and comfortable fit, ensuring hours of uninterrupted listening pleasure. Whether you're running, working out, or simply relaxing, these earbuds stay securely in place, delivering music to fuel your activities.
     Experience crystal-clear sound with enhanced bass and dynamic audio performance. The TechPro Wireless Bluetooth Earbuds utilize advanced noise-canceling technology, allowing you to immerse yourself in your favorite tunes without any distractions from the outside world. Feel the music come alive and enjoy a truly immersive audio experience.`,
   }));

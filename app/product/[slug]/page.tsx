@@ -47,7 +47,7 @@ const productDetails = async ({
         <ImageHandler product={product} />
 
         <div className="product-detail-desc w-fit">
-          <h1>{product?.title}</h1>
+          <h1 className="font-bold text-4xl">{product?.title}</h1>
           <div className="reviews">
             <div className="flex flex-row">
               {product?.rating

@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import Loading from "./loading";
+import AuthProvider from "./AuthProvider";
 
 export const metadata = {
   title: "Next.js",
@@ -16,21 +17,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <div className="layout">
-          <header>
-            <Navbar />
-          </header>
-          <Suspense fallback={<Loading />}>
-            <main className="main-container py-10">{children}</main>
-            <Toaster />
-          </Suspense>
-          <footer>
-            <Footer />
-          </footer>
-        </div>
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          <div className="layout">
+            <header>
+              <Navbar />
+            </header>
+            <Suspense fallback={<Loading />}>
+              <main className="main-container py-10">{children}</main>
+              <Toaster />
+            </Suspense>
+            <footer>
+              <Footer />
+            </footer>
+          </div>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

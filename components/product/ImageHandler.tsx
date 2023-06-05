@@ -15,7 +15,7 @@ const ImageHandler = ({ product }: { product: Product }) => {
   return (
     <div className="w-fit">
       <div className="image-container">
-        <Image
+        <img
           width={400}
           height={400}
           src={images[imgIndex]}
@@ -25,7 +25,7 @@ const ImageHandler = ({ product }: { product: Product }) => {
       </div>
       <div className="small-images-container">
         {images?.map((item, i) => (
-          <Image
+          <img
             key={i}
             width={100}
             height={100}

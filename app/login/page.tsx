@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { Suspense, useState } from "react";
 import Loading from "../loading";
+import { SignInButton } from "@/components/auth/buttons";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

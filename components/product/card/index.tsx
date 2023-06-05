@@ -10,13 +10,14 @@ const Card = ({ product: { image, title, slug, price } }: Props) => {
     <div>
       <Link href={`/product/${slug}`}>
         <div className="product-card">
-          <Image
+          <img
             src={image}
             width={250}
             height={250}
             className="product-image"
             alt={title}
           />
+
           <p className="product-name">{title}</p>
           <p className="product-price">${price}</p>
         </div>
