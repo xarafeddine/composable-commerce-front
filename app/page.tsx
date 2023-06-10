@@ -9,9 +9,7 @@ export default async function Home() {
   const products = await getProducts();
   const categories = getCategories();
   const bannerData = await getBanner();
-  const featuredProducts = products.filter(
-    (prod) => prod.category === "Featured Products"
-  );
+  const featuredProducts = products.filter((prod) => prod.images);
   return (
     <div className="py-10 px-5">
       <HeroBanner heroBanner={bannerData} />

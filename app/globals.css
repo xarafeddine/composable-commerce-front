@@ -440,15 +440,15 @@ span.text-red {
 
 .product-detail-image {
   border-radius: 15px;
-  background-color: #ebebeb;
-
-  width: 400px;
-  height: auto;
+  background-color: #ffffff;
+  object-fit: contain;
+  width: 300px;
+  height: 400px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 .product-detail-image:hover {
-  background-color: #f02d34;
+  background-color: #ebebeb;
 }
 .small-images-container {
   display: flex;
@@ -460,8 +460,8 @@ span.text-red {
 .small-image {
   border-radius: 8px;
   background-color: #ebebeb;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: auto;
   cursor: pointer;
 }
 
@@ -702,7 +702,6 @@ span.text-red {
   }
   .product-detail-container .product-detail-image {
     width: 350px;
-    height: auto;
   }
   .cart-container {
     width: 415px;

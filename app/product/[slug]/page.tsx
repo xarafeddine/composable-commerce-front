@@ -24,26 +24,6 @@ const productDetails = async ({
   return (
     <div>
       <div className="product-detail-container">
-        {/* <div className="w-fit">
-          <div className="image-container">
-            <Image
-              width={500}
-              height={500}
-              src={product?.image}
-              className="product-detail-image"
-              alt={product?.title}
-            />
-          </div>
-          <div className="small-images-container">
-            {images?.map((item, i) => (
-              <Image
-                key={i}
-                src={item}
-                className={i === index ? "small-image selected-image" : "small-image"}
-                onMouseEnter={() => setIndex(i)} alt={""}              />
-            ))}
-          </div>
-        </div> */}
         <ImageHandler product={product} />
 
         <div className="product-detail-desc w-fit">
@@ -55,7 +35,7 @@ const productDetails = async ({
                     .fill(0)
                     .map((_, index) => <AiFillStar key={index} />)
                     .concat(
-                      Array(5 - product?.rating).map((_, index) => (
+                      Array(5 - Math.floor(Math.random()*5)).map((_, index) => (
                         <AiOutlineStar key={index + product?.rating} />
                       ))
                     )

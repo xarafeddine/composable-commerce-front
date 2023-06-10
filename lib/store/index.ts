@@ -23,13 +23,7 @@ export interface ProductState {
 }
 export const useProductsStore = create<ProductState>()((set, get) => ({
   productsList: INITIAL_PRODUCTS,
-  categories: INITIAL_PRODUCTS.reduce((accu: string[], curr) => {
-    if (curr.category && !accu.includes(curr.category)) {
-      return [...accu, curr.category];
-    }
-    return accu;
-  }, []),
-
+  categories: ["men's clothing", "jewelery", "electronics", "women's clothing"],
   cart: [],
   showCart: false,
   setShowCart: (showCart: boolean) => {

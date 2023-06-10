@@ -5,30 +5,34 @@ import { useSearchParams } from "next/navigation";
 import styles from "./productsList.module.css";
 import useProductsStore from "@/lib/store";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/models";
 
 import Loading from "../loading";
 
 const ProductsPage = () => {
   const { productsList, categories } = useProductsStore((state) => state);
+  const prods = productsList
+    .filter((prod) => prod.id === 23)
+    .map((prod) => prod.image);
+  console.log(categories);
 
-  const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout>();
-  const [searchedResults, setSearchedResults] = useState(productsList);
+  // const [searchText, setSearchText] = useState("");
+  // const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout>();
+  // const [searchedResults, setSearchedResults] = useState(productsList);
 
   const searchParams = useSearchParams();
-  const category = searchParams.get("category");
+  const category = searchParams?.get("category");
 
   const [filteredProducts, setFiltredProducts] = useState(productsList);
   const [filterParams, setFilterParams] = useState({
     selectedCategory: category || "",
     selectedPrice: "",
     selectedRating: "",
+    searchedText: "",
   });
 
   const changeFilterParams = (e: any) => {
-    console.log("asdfsadfasf");
     setFilterParams((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -36,9 +40,16 @@ const ProductsPage = () => {
 
   const filter = (
     products: Product[],
-    { selectedCategory, selectedPrice, selectedRating }: any
+    { selectedCategory, selectedPrice, selectedRating, searchedText }: any
   ) => {
-    let filtered = products;
+    let filtered = [...products];
+    // console.log(filtered);
+
+    if (searchedText !== "") {
+      const regex = new RegExp(searchedText, "i"); // 'i' flag for case-insensitive search
+
+      filtered = filtered.filter((prod) => regex.test(prod.title));
+    }
 
     if (selectedCategory !== "")
       filtered = filtered.filter(
@@ -68,25 +79,25 @@ const ProductsPage = () => {
     return filtered;
   };
 
-  const filterProducts = (searchedText: string) => {
-    const regex = new RegExp(searchedText, "i"); // 'i' flag for case-insensitive search
-    return productsList.filter((prod) => regex.test(prod.title));
-  };
+  // const filterProducts = (searchedText: string) => {
+  //   const regex = new RegExp(searchedText, "i"); // 'i' flag for case-insensitive search
+  //   return productsList.filter((prod) => regex.test(prod.title));
+  // };
 
-  const handleSearchChange = (e: any) => {
-    clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
-    const timeout = setTimeout(() => {
-      const searchResult = filterProducts(e.target.value);
-      setSearchedResults(searchResult);
-    }, 500);
-    // debounce method
-    setSearchTimeout(timeout);
-  };
+  // const handleSearchChange = (e: any) => {
+  //   clearTimeout(searchTimeout);
+  //   setSearchText(e.target.value);
+  //   const timeout = setTimeout(() => {
+  //     const searchResult = filterProducts(e.target.value);
+  //     setSearchedResults(searchResult);
+  //   }, 500);
+  //   // debounce method
+  //   setSearchTimeout(timeout);
+  // };
 
   useEffect(() => {
-    setFiltredProducts(filter(searchedResults, filterParams));
-  }, [filterParams, searchedResults]);
+    setFiltredProducts(filter(productsList, filterParams));
+  }, [filterParams, productsList]);
 
   return (
     <div className={styles["products-list"]}>
@@ -98,11 +109,11 @@ const ProductsPage = () => {
 
           <input
             type="text"
-            name="search"
+            name="searchedText"
             placeholder="Search for products..."
             autoComplete="off"
-            value={searchText}
-            onChange={handleSearchChange}
+            value={filterParams.searchedText}
+            onChange={changeFilterParams}
             className="w-full px-4 py-2 text-black"
           />
         </div>

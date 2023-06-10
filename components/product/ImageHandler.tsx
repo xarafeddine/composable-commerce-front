@@ -1,16 +1,12 @@
 "use client";
 
-import { getImages } from "@/lib/client";
 import { Product } from "@/lib/models";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ImageHandler = ({ product }: { product: Product }) => {
-  const [images, setImages] = useState<string[]>([product.image]);
+  const images = product?.images || [product.image];
   const [imgIndex, setImgIndex] = useState(0);
-  useEffect(() => {
-    setImages(getImages(product));
-  }, [product]);
 
   return (
     <div className="w-fit">

@@ -49,7 +49,7 @@ const Navbar = () => {
         </Link> */}
 
         <SignInButton>
-          <BiLogIn size="25px" color="green" />
+          <BiLogIn size="25px" color="black" />
         </SignInButton>
 
         {status === "authenticated" && (
