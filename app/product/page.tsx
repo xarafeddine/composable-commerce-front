@@ -70,8 +70,8 @@ const ProductsPage = () => {
 
     if (selectedRating !== "") {
       filtered = filtered.filter((product) => {
-        const rating = product.rating;
-        if (rating) return rating >= selectedRating;
+        const rate = product?.rating?.rate;
+        if (rate) return rate >= selectedRating;
         return true;
       });
     }

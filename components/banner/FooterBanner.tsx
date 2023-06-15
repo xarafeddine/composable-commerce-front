@@ -12,7 +12,7 @@ const FooterBanner = ({
     smallText,
     midText,
     desc,
-    product,
+    product2,
     buttonText,
     image2,
   },
@@ -32,7 +32,7 @@ const FooterBanner = ({
           <div className="w-[50%]">
             <p>the AcousticX Pro Wireless Headphones</p>
           </div>
-          <Link href={`/product/${product}`}>
+          <Link href={`/product/${product2}`}>
             <button type="button">{buttonText}</button>
           </Link>
         </div>

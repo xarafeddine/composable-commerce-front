@@ -5,12 +5,12 @@ import { getProduct, getRelatedProducts } from "@/lib/client";
 
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-export const dynamic = "force-dynamic";
-export const dynamicParams = true;
-export const revalidate = false;
-export const fetchCache = "auto";
-export const runtime = "nodejs";
-export const preferredRegion = "all";
+// export const dynamic = "force-dynamic";
+// export const dynamicParams = true;
+// export const revalidate = false;
+// export const fetchCache = "auto";
+// export const runtime = "nodejs";
+// export const preferredRegion = "all";
 
 const productDetails = async ({
   params: { slug },
@@ -31,18 +31,21 @@ const productDetails = async ({
           <div className="reviews">
             <div className="flex flex-row">
               {product?.rating
-                ? Array(5)
+                ? Array(Math.round(product?.rating.rate))
                     .fill(0)
                     .map((_, index) => <AiFillStar key={index} />)
                     .concat(
-                      Array(5 - Math.floor(Math.random()*5)).map((_, index) => (
-                        <AiOutlineStar key={index + product?.rating} />
-                      ))
+                      Array(5 - Math.round(product?.rating.rate))
+                        .fill(0)
+                        .map((_, index) => (
+                          <AiOutlineStar key={index + product?.rating.rate} />
+                        ))
                     )
                 : "no review"}
             </div>
-            <p>(20)</p>
           </div>
+          <span>Count {product.rating.count}</span>
+
           <p className="price">${product.price}</p>
 
           <h4 className="font-bold">Details: </h4>

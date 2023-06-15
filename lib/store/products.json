@@ -242,42 +242,61 @@
     },
     {
       "id": 21,
-      "title": "Apple iPhone 11",
-      "image": "/images/products/iphone/iphone3.jpeg",
+      "title": "Boat earphones 7",
+      "image": "/images/products/earphones/earphones_a_1.webp",
       "images": [
-        "/images/products/iphone/iphone3.jpeg",
-        "/images/products/iphone/iphone2.jpeg",
-        "/images/products/iphone/iphone4.jpeg",
-        "/images/products/iphone/iphone5.jpeg",
-        "/images/products/iphone/iphone6.jpeg",
-        "/images/products/iphone/iphone1.jpeg"
+        "/images/products/earphones/earphones_a_1.webp",
+        "/images/products/earphones/earphones_a_2.webp",
+        "/images/products/earphones/earphones_a_3.webp",
+        "/images/products/earphones/earphones_a_4.webp"
       ],
-      "price": 760,
-      "category": "electronics"
+      "price": 109.87,
+      "category": "electronics",
+      "rating": {
+        "rate": 4.5,
+        "count": 6709
+      },
+      "details": "Experience an immersive audio journey with the Boat XYZ Earphones. Designed for music enthusiasts and audiophiles, these earphones deliver exceptional sound quality and comfort. Immerse yourself in crystal-clear audio with the precision-tuned drivers that produce rich and dynamic sound. Whether you're listening to your favorite tracks, podcasts, or engaging in virtual meetings, the Boat XYZ Earphones ensure an enhanced audio experience."
     },
 
     {
       "id": 22,
-      "title": "Sony WH-CH510",
-      "image": "/images/products/headphone/headphone2.jpeg",
+      "title": "Boat headphone A 4321",
+      "image": "/images/products/headphones_a/headphones_a_1.webp",
       "images": [
-        "/images/products/headphone/headphone2.jpeg",
-        "/images/products/headphone/headphone3.jpeg",
-        "/images/products/headphone/headphone4.jpeg",
-        "/images/products/headphone/headphone6.jpeg",
-
-        "/images/products/headphone/headphone7.jpeg",
-        "/images/products/headphone/headphone5.jpeg",
-        "/images/products/headphone/headphone8.jpeg",
-        "/images/products/headphone/headphone9.jpeg",
-        "/images/products/headphone/headphone10.jpeg",
-        "/images/products/headphone/headphone1.jpeg",
-        "/images/products/headphone/headphone11.jpeg",
-        "/images/products/headphone/headphone12.jpeg"
+        "/images/products/headphones_a/headphones_a_1.webp",
+        "/images/products/headphones_a/headphones_a_2.webp",
+        "/images/products/headphones_a/headphones_a_3.webp",
+        "/images/products/headphones_a/headphones_a_4.webp"
       ],
-      "price": 265,
-      "category": "electronics"
+      "price": 75.01,
+      "rating": {
+        "rate": 3.8,
+        "count": 1979
+      },
+      "category": "electronics",
+      "details": "The boat headphone A 4321 headphones are a perfect choice for those seeking a high-quality wireless listening experience. With their lightweight and comfortable design, they provide a pleasant fit for extended use. The WH-CH510 headphones deliver excellent audio quality with their 30mm speakers and ambient noise reduction technology. They are also equipped with Bluetooth connectivity, allowing for hassle-free movement without the burden of wires. The long-lasting battery provides up to 35 hours of playback, making them an ideal choice for travel or long listening sessions. In summary, the Sony WH-CH510 headphones offer quality sound, optimal comfort, and extended battery life, making them perfect for enjoying music on the go."
     },
+
+    {
+      "id": 27,
+      "title": "Boat headphone c 4321",
+      "image": "/images/products/headphones_c/headphones_c_1.webp",
+      "images": [
+        "/images/products/headphones_c/headphones_c_1.webp",
+        "/images/products/headphones_c/headphones_c_2.webp",
+        "/images/products/headphones_c/headphones_c_3.webp",
+        "/images/products/headphones_c/headphones_c_4.webp"
+      ],
+      "price": 55.01,
+      "rating": {
+        "rate": 4.8,
+        "count": 1979
+      },
+      "category": "electronics",
+      "details": "The boat headphone C 4321 headphones are a perfect choice for those seeking a high-quality wireless listening experience. With their lightweight and comfortable design, they provide a pleasant fit for extended use. The WH-CH510 headphones deliver excellent audio quality with their 30mm speakers and ambient noise reduction technology. They are also equipped with Bluetooth connectivity, allowing for hassle-free movement without the burden of wires. The long-lasting battery provides up to 35 hours of playback, making them an ideal choice for travel or long listening sessions. In summary, the Sony WH-CH510 headphones offer quality sound, optimal comfort, and extended battery life, making them perfect for enjoying music on the go."
+    },
+
     {
       "id": 23,
       "title": "Samsung Galaxy",
@@ -290,8 +309,13 @@
         "/images/products/sumsung/samsung1.jpeg",
         "/images/products/sumsung/samsung3.jpeg"
       ],
-      "price": 270,
-      "category": "electronics"
+      "price": 99.65,
+      "category": "electronics",
+      "rating": {
+        "rate": 4.8,
+        "count": 4679
+      },
+      "details": "The Samsung Galaxy is a flagship smartphone that offers a sleek design and advanced features. With its vibrant display, high-resolution camera, powerful processing, and exceptional battery life, the Samsung Galaxy delivers a premium user experience. Whether it's browsing the internet, capturing stunning photos, or managing daily tasks, the Samsung Galaxy is a reliable and high-performing choice for users seeking a top-of-the-line smartphone."
     }
   ]
 }

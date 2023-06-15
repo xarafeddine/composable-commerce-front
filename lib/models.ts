@@ -5,7 +5,7 @@ export type Product = {
   images?: string[];
   price: number;
   category?: string;
-  rating?: number;
+  rating?: { rate: number; count: number };
   isInCart?: boolean;
   slug?: string;
   details?: string;

@@ -17,13 +17,20 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <ul className="flex felx-row gap-10">
+      <ul className="flex felx-row gap-6 justify-center items-center ">
         <li className="hover:font-bold">
-          <Link href="/">HOME</Link>
+          <Link href="/">
+            <img
+              className="hover:scale-105"
+              src="/icon-192x192.png"
+              width={50}
+            />
+          </Link>
+          {/* <Link href="/">HOME</Link> */}
         </li>
 
         <li className="hover:font-bold">
-          <Link href="/product">All products</Link>
+          <Link href="/product">All Products</Link>
         </li>
       </ul>
 

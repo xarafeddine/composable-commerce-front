@@ -5,6 +5,7 @@ import {
   AiOutlineFacebook,
   AiOutlineLinkedin,
 } from "react-icons/ai";
+import InstallBtn from "../PWA/InstallBtn";
 
 const Footer = () => {
   return (
@@ -68,6 +69,9 @@ const Footer = () => {
               >
                 Terms of Use
               </Link>
+            </li>
+            <li className="py-3 md:py-0 md:pb-4">
+              <InstallBtn />
             </li>
           </ul>
         </div>

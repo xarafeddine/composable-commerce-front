@@ -10,8 +10,15 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID! as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
 
     GithubProvider({
@@ -20,14 +27,17 @@ export const authOptions: NextAuthOptions = {
     }),
 
     CredentialsProvider({
-      name: "as Guest",
-      credentials: {},
+      name: "Sign in",
+      credentials: {
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "example@example.com",
+        },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials) {
-        const user = {
-          id: Math.random().toString(),
-          name: "Guest",
-          email: "guest@example.com",
-        };
+        const user = { id: "1", name: "Admin", email: "admin@admin.com" };
         return user;
       },
     }),
@@ -43,5 +53,4 @@ export const authOptions: NextAuthOptions = {
   debug: true,
 };
 
-
-export default NextAuth(authOptions)
+export default NextAuth(authOptions);

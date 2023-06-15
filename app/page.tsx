@@ -28,7 +28,7 @@ export default async function Home() {
         </ul>
       </div>
 
-      <div className="p-10 text-center">
+      <div className="p-10">
         <div className="products-heading">
           <h2>Best Seller Products</h2>
           <p>speaker There are many variations passages</p>
