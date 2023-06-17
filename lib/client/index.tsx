@@ -18,7 +18,8 @@ export const getProducts = () => {
   }));
 };
 
-export const getProduct = async (slug: string) => {
+export const getProduct = (slug: string | undefined) => {
+  if (!slug) return undefined;
   const prods = getProducts();
   return prods.find((prod) => prod.slug === slug);
 };
@@ -47,7 +48,7 @@ export const getCategories = () => {
   }, []);
 };
 
-export const getBanner = async () => {
+export const getBanner = () => {
   return {
     smallText: "wireless",
     midText: "Beast solo",

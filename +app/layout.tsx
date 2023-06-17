@@ -1,5 +1,3 @@
-// "use client";
-
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -23,20 +21,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // useEffect(() => {
-  //   if ("serviceWorker" in navigator) {
-  //     window.addEventListener("load", () => {
-  //       navigator.serviceWorker
-  //         .register("/service-worker.js") // Path to your service worker file
-  //         .then((registration) => {
-  //           console.log("Service worker registered:", registration);
-  //         })
-  //         .catch((error) => {
-  //           console.error("Error registering service worker:", error);
-  //         });
-  //     });
-  //   }
-  // }, []);
 
   return (
     <AuthProvider>

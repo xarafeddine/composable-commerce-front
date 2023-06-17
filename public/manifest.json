@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "composable_commerce",
-  "short_name": "store",
+  "name": "pwa_composable_commerce",
+  "short_name": "pwa_commerce",
   "description": "this app is a PWA e-commerce platform.",
   "icons": [
     {

@@ -1,12 +1,13 @@
 import { create } from "zustand";
 import { Product, cartItem } from "../models";
 // import { getProducts } from "../contentfull";
-import { getProducts } from "../client";
+import { getBanner, getProducts } from "../client";
 import data from "./products.json";
 
 const INITIAL_PRODUCTS: Product[] = getProducts();
 
 export interface ProductState {
+  bannerData: any;
   productsList: Product[];
   categories: string[];
   cart: cartItem[];
@@ -24,6 +25,7 @@ export interface ProductState {
 export const useProductsStore = create<ProductState>()((set, get) => ({
   productsList: INITIAL_PRODUCTS,
   categories: ["men's clothing", "jewelery", "electronics", "women's clothing"],
+  bannerData: getBanner(),
   cart: [],
   showCart: false,
   setShowCart: (showCart: boolean) => {
