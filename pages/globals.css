@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss/tailwind.css";
 
 html,
 body,
@@ -802,6 +803,11 @@ span.text-red {
   margin-bottom: 10px;
 }
 
+.chatbot-container {
+  width: 30rem;
+  height: 24rem;
+}
+
 @media screen and (max-width: 800px) {
   .hero-banner-container {
     height: 560px;
@@ -950,6 +956,9 @@ span.text-red {
 
 @media screen and (max-width: 500px) {
   .cart-container {
+    width: 100vw;
+  }
+  .chatbot-container {
     width: 100vw;
   }
 }

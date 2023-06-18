@@ -36,7 +36,7 @@ const Navbar = () => {
 
       <form
         // onSubmit={onSubmit}
-        className="relative m-0 flex w-1/3 items-center border border-gray-200 bg-transparent p-0 dark:border-gray-500"
+        className="relative m-0 flex w-1/4 items-center border border-gray-200 bg-transparent p-0 dark:border-gray-500"
       >
         <input
           type="text"

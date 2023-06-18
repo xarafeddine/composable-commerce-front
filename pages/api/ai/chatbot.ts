@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { getProducts } from "@/lib/client";
+import { Configuration, OpenAIApi } from "openai";
+import https from "https";
 
 export default async function handler(
   req: NextApiRequest,
@@ -44,19 +46,43 @@ export default async function handler(
             ${JSON.stringify(productsData)}
             `,
           },
+          {
+            role: "assistant",
+            content:
+              "Welcome to our e-commerce platform I am you chatbot assistant!",
+          },
+
           { role: "user", content: message },
         ],
       },
       {
+        httpsAgent: new https.Agent({ rejectUnauthorized: false }),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.GPT_API_KEY}`,
         },
       }
     );
-
-    // Extract chatbot response
     const reply = response.data.choices[0].message.content;
+
+    // const configuration = new Configuration({
+    //   organization: "org-HhhTZNJA3FuneSU4GJCIepLm",
+    //   apiKey: process.env.OPENAI_API_KEY,
+    // });
+
+    // const openai = new OpenAIApi(configuration);
+
+    // // Define the payload for chat completions
+    // const payload = {
+    //   model: "gpt-3.5-turbo",
+    //   messages: [],
+    // };
+    // const completion = await openai.createChatCompletion(payload);
+
+    // console.log(completion.data.choices[0].message);
+
+    // // Extract chatbot response
+    // const reply = completion.data.choices[0].message;
 
     res.json({ reply });
   } catch (error) {

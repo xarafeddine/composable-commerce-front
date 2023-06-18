@@ -9,11 +9,14 @@
 
 .filters {
   width: 25%;
-  padding: 30px;
+  padding: 20px;
 }
 
 .filter-group {
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
   justify-content: center;
   align-items: center;
   margin: 20px 0px;
@@ -40,9 +43,12 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   .products-list {
     flex-direction: column;
     align-items: center;
+  }
+  .filters {
+    width: 80%;
   }
 }

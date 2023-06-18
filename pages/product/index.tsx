@@ -12,10 +12,6 @@ import Loading from "../loading";
 
 const ProductsPage = () => {
   const { productsList, categories } = useProductsStore((state) => state);
-  const prods = productsList
-    .filter((prod) => prod.id === 23)
-    .map((prod) => prod.image);
-  console.log(categories);
 
   const searchParams = useSearchParams();
   const category = searchParams?.get("category");

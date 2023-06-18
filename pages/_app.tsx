@@ -7,6 +7,7 @@ import Loading from "./loading";
 import AuthProvider from "./AuthProvider";
 
 import { AppProps } from "next/app";
+import ChatbotContainer from "@/components/Ai/ChatbotContainer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className="main-container  py-10">
             <Component {...pageProps} />
           </div>
+          <ChatbotContainer />
           <Toaster />
         </Suspense>
         <footer>
