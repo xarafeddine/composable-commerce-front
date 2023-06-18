@@ -13,7 +13,6 @@ export const getProducts = () => {
   const prods = data.products;
   return prods.map((prod) => ({
     ...prod,
-    isInCart: false,
     slug: slugify(`${prod.title}_id_${prod.id}`),
   }));
 };
