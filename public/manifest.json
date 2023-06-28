@@ -4,6 +4,7 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
+  "sw": "/service-worker.js",
   "name": "pwa_composable_commerce",
   "short_name": "pwa_commerce",
   "description": "this app is a PWA e-commerce platform.",

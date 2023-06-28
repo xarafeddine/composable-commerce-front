@@ -1,23 +1,16 @@
+import useProductsStore from "@/lib/store";
 import { useState, useEffect } from "react";
+import { LoaderIcon } from "react-hot-toast";
 
 function Chatbot() {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
-    []
+  // const [messages, setMessages] = useState<{ role: string; content: string }[]>(
+  //   []
+  // );
+  const { chatbotMessages, setChatbotMessages } = useProductsStore(
+    (state) => state
   );
   const [input, setInput] = useState("");
-
-  useEffect(() => {
-    // Fetch messages from the backend or initialize with welcome message
-    // You can replace this with your own logic to fetch initial messages
-    const initialMessages = [
-      {
-        role: "assistant",
-        content:
-          "Welcome to our e-commerce platform I am you chatbot assistant!",
-      },
-    ];
-    setMessages(initialMessages);
-  }, []);
+  const [loader, setLoader] = useState(false);
 
   const handleMessageSubmit = (e: any) => {
     e.preventDefault();
@@ -26,16 +19,25 @@ function Chatbot() {
     }
 
     const userMessage = { role: "user", content: input };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+
+    const newMessages = [...chatbotMessages, userMessage];
+    setChatbotMessages(userMessage);
+    const last10messages = newMessages.slice(-10); // remember last 10 messages
+
+    // setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput("");
 
     // Send the user message to the backend for processing
     // You can replace this with your own logic to handle user messages
     // and receive responses from the chatbot
-    handleUserMessage(input);
+    handleUserMessage(last10messages);
   };
 
-  const handleUserMessage = async (message: string) => {
+  const handleUserMessage = async (
+    messages: { role: string; content: string }[]
+  ) => {
+    setLoader(true);
+
     try {
       // Send the user message to your chatbot API endpoint
       const response = await fetch("/api/ai/chatbot", {
@@ -43,7 +45,7 @@ function Chatbot() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ messages }),
       });
 
       if (!response.ok) {
@@ -51,10 +53,13 @@ function Chatbot() {
       }
 
       const { reply } = await response.json();
-      const chatbotMessage = { role: "chatbot", content: reply };
-      setMessages((prevMessages) => [...prevMessages, chatbotMessage]);
+      const newChatbotMessage = { role: "assistant", content: reply };
+
+      setChatbotMessages(newChatbotMessage);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -62,7 +67,7 @@ function Chatbot() {
     <div className="chatbot-container fixed bottom-0 right-0 p-3 bg-gray-100">
       <div className="flex flex-col h-full p-4 overflow-y-auto bg-white rounded shadow">
         <div className="flex-grow mb-4">
-          {messages.map((message, index) => {
+          {chatbotMessages.map((message, index) => {
             return (
               <div key={index} className="flex flex-row gap-1 mb-2">
                 <span className="font-bold mt-2">
@@ -79,6 +84,15 @@ function Chatbot() {
               </div>
             );
           })}
+          {loader && (
+            <div className="flex flex-row gap-1 mb-2">
+              <span className="font-bold mt-2">Bot:</span>
+
+              <div className="bg-zinc-50 p-2 text-black rounded">
+                <LoaderIcon />
+              </div>
+            </div>
+          )}
         </div>
         <form className="flex" onSubmit={handleMessageSubmit}>
           <input

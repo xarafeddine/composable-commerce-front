@@ -5,13 +5,15 @@ import { getBanner, getProducts } from "../client";
 import data from "./products.json";
 
 const INITIAL_PRODUCTS: Product[] = getProducts();
-
+type chatbotMessage = { role: string; content: string };
 export interface ProductState {
   bannerData: any;
   productsList: Product[];
   categories: string[];
   cart: cartItem[];
   showCart: boolean;
+  chatbotMessages: chatbotMessage[];
+  setChatbotMessages: (chatbotmessages: chatbotMessage) => void;
   getCartItem: (id: number) => cartItem | undefined;
   getTotalQuantities: () => number;
   setShowCart: (showCart: boolean) => void;
@@ -33,7 +35,17 @@ export const useProductsStore = create<ProductState>()((set, get) => ({
       return { showCart };
     });
   },
-
+  chatbotMessages: [
+    {
+      role: "assistant",
+      content: "Welcome to our e-commerce platform I am you chatbot assistant!",
+    },
+  ],
+  setChatbotMessages: (chatbotMessage: chatbotMessage) => {
+    set((state) => {
+      return { chatbotMessages: [...state.chatbotMessages, chatbotMessage] };
+    });
+  },
   getTotalQuantities: () => {
     return get().cart.reduce((accu, curr) => {
       return accu + curr.quantity;

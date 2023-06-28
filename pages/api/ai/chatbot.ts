@@ -13,7 +13,7 @@ export default async function handler(
     return;
   }
 
-  const { message } = req.body;
+  const { messages } = req.body;
 
   try {
     // Check if it's an ecommerce query
@@ -44,15 +44,18 @@ export default async function handler(
             it is a pwa app.
             this is the products's data JSON stringified:
             ${JSON.stringify(productsData)}
+            the best solo product is "Boat headphone c 4321".
+            the second best solo product is "Boat headphone A 4321".
+            the best Seller Products are: Boat earphones 7, Boat headphone A 4321, Samsung Galaxy and Boat headphone c 4321.
             `,
           },
-          {
-            role: "assistant",
-            content:
-              "Welcome to our e-commerce platform I am you chatbot assistant!",
-          },
-
-          { role: "user", content: message },
+          // {
+          //   role: "assistant",
+          //   content:
+          //     "Welcome to our e-commerce platform I am you chatbot assistant!",
+          // },
+          ...messages,
+          // { role: "user", content: message },
         ],
       },
       {
