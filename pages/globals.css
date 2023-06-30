@@ -297,10 +297,10 @@ span.text-red {
 }
 .cart-container {
   height: 100vh;
-  width: 415px;
+  width: 460px;
   background-color: white;
   float: right;
-  padding: 40px 10px;
+  padding: 40px 20px;
   position: relative;
 }
 
@@ -366,15 +366,15 @@ span.text-red {
   padding: 20px 5px;
 }
 .product .cart-product-image {
-  width: 25%;
-  height: 25%;
+  width: 20%;
+  height: 20%;
   border-radius: 15px;
   background-color: #ebebeb;
 }
 .item-desc .flex {
   display: flex;
   justify-content: space-between;
-  width: 240px;
+  width: 300px;
   gap: 10px;
   color: #324d67;
 }
@@ -547,13 +547,13 @@ span.text-red {
 .quantity-desc {
   border: 1px solid gray;
   border-radius: 5px;
-  padding: 6px;
+  padding: 3px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 .quantity-desc span {
-  font-size: 16px;
+  font-size: 8px;
   padding: 6px 12px;
   cursor: pointer;
 }
@@ -563,7 +563,7 @@ span.text-red {
 }
 .quantity-desc .num {
   border-right: 1px solid gray;
-  font-size: 20px;
+  font-size: 15px;
 }
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
@@ -755,7 +755,7 @@ span.text-red {
 }
 
 /* checkout page */
-.checkout-page {
+/* .checkout-page {
   margin: auto;
   width: 50%;
 }
@@ -804,10 +804,181 @@ span.text-red {
   margin-bottom: 10px;
 }
 
+
+
+
+
+
+.card-number-input {
+  position: relative;
+}
+
+.card-number-input input {
+  padding-right: 48px; 
+}
+
+.card-icons {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+}
+
+.card-icon {
+  font-size: 24px;
+  margin-right: 4px;
+}
+
+.mastercard {
+  color: #ff5f00; 
+}
+
+.visa {
+  color: #1a1f71; 
+} */
+
+/* error */
+.error {
+  color: red;
+}
+
+/* chatbot */
 .chatbot-container {
   width: 30rem;
   height: 24rem;
 }
+
+/* new checkout */
+
+.checkout-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.checkout-cart-container {
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-summary {
+  text-align: right;
+}
+
+.customer-info,
+.payment-details {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.card-number-input {
+  display: flex;
+  align-items: center;
+}
+
+.card-icons {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.card-icon {
+  color: #ccc;
+  font-size: 24px;
+}
+
+.card-icon.visa {
+  color: #ff4757;
+}
+
+.card-icon.mastercard {
+  color: #1e87f0;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1e87f0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .checkout-page {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .checkout-cart-container,
+  .checkout-form {
+    max-width: none;
+    width: 50%;
+  }
+
+  .checkout-form {
+    padding: 40px;
+  }
+}
+
+/* asdfsdafsadf */
 
 @media screen and (max-width: 800px) {
   .hero-banner-container {
@@ -874,7 +1045,7 @@ span.text-red {
   }
   .cart-container {
     width: 415px;
-    padding: 4px;
+    padding: 4px 10px;
   }
   .cart-heading {
     margin-top: 35px;
@@ -882,10 +1053,12 @@ span.text-red {
   .product-container {
     margin-top: 10px;
   }
-
+  .item-desc .flex {
+    width: 270px;
+  }
   .product .cart-product-image {
-    width: 25%;
-    height: 25%;
+    width: 20%;
+    height: 20%;
   }
   .buttons .add-to-cart {
     width: 150px;
