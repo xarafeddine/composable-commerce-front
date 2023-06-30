@@ -16,7 +16,7 @@ const QtyHandler = ({ item }: { item: cartItem }) => {
             () =>
               updateCart({
                 ...item,
-                quantity: item.quantity - 1,
+                quantity: Math.max(0, item.quantity - 1),
               })
             // toggleCartItemQuanitity(item.productId, "dec")
           }
@@ -30,7 +30,7 @@ const QtyHandler = ({ item }: { item: cartItem }) => {
             () =>
               updateCart({
                 ...item,
-                quantity: item.quantity + 1,
+                quantity: Math.min(item.quantity + 1, 20),
               })
 
             // toggleCartItemQuanitity(item.productId, "inc")

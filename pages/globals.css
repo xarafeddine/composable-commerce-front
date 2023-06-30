@@ -358,27 +358,28 @@ span.text-red {
   margin-top: 15px;
   overflow: auto;
   max-height: 70vh;
-  padding: 20px 10px;
+  padding: 20px 5px;
 }
 .product {
   display: flex;
-  gap: 30px;
-  padding: 20px;
+  gap: 25px;
+  padding: 20px 5px;
 }
 .product .cart-product-image {
   width: 25%;
-  height: auto;
+  height: 25%;
   border-radius: 15px;
   background-color: #ebebeb;
 }
 .item-desc .flex {
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 240px;
+  gap: 10px;
   color: #324d67;
 }
 .item-desc .bottom {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .flex h5 {
   font-size: 16px;
@@ -409,7 +410,7 @@ span.text-red {
 }
 
 .btn-container {
-  width: 300px;
+  width: 200px;
   margin: auto;
 }
 .btn {
@@ -881,9 +882,7 @@ span.text-red {
   .product-container {
     margin-top: 10px;
   }
-  .product {
-    padding: 20px 5px;
-  }
+
   .product .cart-product-image {
     width: 25%;
     height: 25%;
@@ -898,24 +897,6 @@ span.text-red {
     margin: 20px;
   }
 
-  .item-desc .flex {
-    width: 200px;
-  }
-  .top {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .item-desc .bottom {
-    margin-top: 30px;
-  }
-  .flex h5 {
-    font-size: 16px;
-    color: #324d67;
-  }
-  .flex h4 {
-    font-size: 16px;
-    color: black;
-  }
   .cart-bottom {
     padding: 30px;
   }

@@ -28,13 +28,15 @@ const Cart = () => {
 
   const totalQuantities = getTotalQuantities();
 
-  const cartItems = cart.sort().map((item) => {
-    const { title, image, price } = productsList.find(
-      (prod: Product) => prod.id === item.productId
-    ) as Product;
+  const cartItems = cart
+    .sort((a, b) => a.productId - b.productId)
+    .map((item) => {
+      const { title, image, price } = productsList.find(
+        (prod: Product) => prod.id === item.productId
+      ) as Product;
 
-    return { ...item, title, image, price };
-  });
+      return { ...item, title, image, price };
+    });
 
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -43,7 +45,9 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     setShowCart(false);
-    if (status === "authenticated") return router.push("/checkout");
+    if (status === "authenticated") {
+      return router.push("/checkout");
+    }
     return toast.error("you are not authenticated");
   };
   console.log(cart);
@@ -83,15 +87,15 @@ const Cart = () => {
               <div className="product" key={item.productId}>
                 <img
                   src={item?.image}
-                  width={180}
-                  height={150}
                   className="cart-product-image"
                   alt={item?.title}
                 />
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.title}</h5>
-                    <h4>${item.price * item.quantity}</h4>
+                    <h4 className="text-green-500">
+                      ${(item.price * item.quantity).toFixed(1)}
+                    </h4>
                   </div>
                   <div className="flex bottom">
                     {/* <div>
@@ -148,7 +152,7 @@ const Cart = () => {
           <div className="cart-bottom">
             <div className="total">
               <h3>Subtotal:</h3>
-              <h3>${totalPrice}</h3>
+              <h3 className="text-green-500">${totalPrice.toFixed(2)}</h3>
             </div>
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
