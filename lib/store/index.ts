@@ -24,7 +24,7 @@ export interface ProductState {
   addToCart: (id: number) => void;
   addToWishlist: (id: number) => void;
   setCartItems: (cart: cartItem[]) => void;
-  // setwishlist: (wishlist: []) => void;
+  setWishlistItems: (wishlist: []) => void;
   removeFromCart: (id: number) => void;
   removeFromWishlist: (id: number) => void;
   updateProducts: (prod: Product[]) => void;
@@ -132,7 +132,11 @@ const useProductsStore = createProductsStore((set, get) => ({
       return { cart };
     });
   },
-
+  setWishlistItems: (wishlist: any[]) => {
+    set(() => {
+      return { wishlist };
+    });
+  },
   updateCart: (item) => {
     get().removeFromCart(item.productId);
     set((state) => {

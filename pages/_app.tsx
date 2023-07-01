@@ -22,26 +22,38 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   // added code - start
-  const { cart, setCartItems } = useProductsStore((state) => state);
+  const { cart, setCartItems, wishlist, setWishlistItems } = useProductsStore(
+    (state) => state
+  );
 
   useEffect(() => {
     if (isClient) {
-      const stateFromStorage = window.localStorage.getItem(
+      const cartFromStorage = window.localStorage.getItem(
         "composable_commerce_cart"
       );
-      const data = stateFromStorage && JSON.parse(stateFromStorage);
-      if (data) {
-        setCartItems(data);
-      }
+      const wishlistFromStorage = window.localStorage.getItem(
+        "composable_commerce_wishlist"
+      );
+      const cartData = cartFromStorage && JSON.parse(cartFromStorage);
+      const wishlistData =
+        wishlistFromStorage && JSON.parse(wishlistFromStorage);
+
+      cartData && setCartItems(cartData);
+      wishlistData && setWishlistItems(wishlistData);
     }
-  }, [isClient, setCartItems]);
+  }, [isClient, setCartItems, setWishlistItems]);
 
   useEffect(() => {
     if (isClient) {
-      const data = JSON.stringify(cart);
-      window.localStorage.setItem("composable_commerce_cart", data);
+      const cart_data = JSON.stringify(cart);
+      const wishlist_data = JSON.stringify(wishlist);
+      window.localStorage.setItem("composable_commerce_cart", cart_data);
+      window.localStorage.setItem(
+        "composable_commerce_wishlist",
+        wishlist_data
+      );
     }
-  }, [cart, isClient]);
+  }, [cart, wishlist, isClient]);
   //added code end
 
   if (!isClient) {
