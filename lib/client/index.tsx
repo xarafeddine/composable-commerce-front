@@ -13,6 +13,7 @@ export const getProducts = () => {
   const prods = data.products;
   return prods.map((prod) => ({
     ...prod,
+    isInWishlist: false,
     slug: slugify(`${prod.title}_id_${prod.id}`),
   }));
 };
@@ -23,7 +24,7 @@ export const getProduct = (slug: string | undefined) => {
   return prods.find((prod) => prod.slug === slug);
 };
 
-export const getRelatedProducts = (category: string) => {
+export const getRelatedProducts = (category: string | undefined) => {
   const prods = getProducts();
   return prods.filter((prod) => prod.category === category);
 };

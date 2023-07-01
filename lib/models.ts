@@ -6,7 +6,7 @@ export type Product = {
   price: number;
   category?: string;
   rating?: { rate: number; count: number };
-  isInCart?: boolean;
+  isInWishlist?: boolean;
   slug?: string;
   details?: string;
 };

@@ -8,12 +8,20 @@ import Cart from "../product/Cart";
 import SearchIcon from "../icons/search";
 import { useSession } from "next-auth/react";
 import { SignInButton, SignOutButton } from "../auth/buttons";
+import { useState } from "react";
+import { FaRegHeart } from "react-icons/fa";
+import Wishlist from "../product/wishlist";
 
 const Navbar = () => {
-  const { showCart, setShowCart, getTotalQuantities } = useProductsStore();
+  const {
+    showCart,
+    setShowCart,
+    getTotalQuantities,
+    showWishlist,
+    setShowWishlist,
+    wishlist,
+  } = useProductsStore();
   const { data: session, status } = useSession();
-
-  console.log(session, status);
 
   return (
     <div className="navbar-container">
@@ -68,11 +76,21 @@ const Navbar = () => {
         <button
           type="button"
           className="cart-icon"
+          onClick={() => setShowWishlist(true)}
+        >
+          <FaRegHeart size={20} />
+          <span className="cart-item-qty">{wishlist.length}</span>
+        </button>
+
+        <button
+          type="button"
+          className="cart-icon"
           onClick={() => setShowCart(true)}
         >
           <AiOutlineShopping />
           <span className="cart-item-qty">{getTotalQuantities()}</span>
         </button>
+        {showWishlist && <Wishlist />}
         {showCart && <Cart />}
       </div>
     </div>

@@ -11,6 +11,8 @@ import AuthProvider from "./AuthProvider";
 import { AppProps } from "next/app";
 import ChatbotContainer from "@/components/Ai/ChatbotContainer";
 import useProductsStore from "@/lib/store";
+import CheckoutPage from "./checkout";
+import Success from "./confirmation";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
@@ -46,21 +48,21 @@ export default function App({ Component, pageProps }: AppProps) {
     return null; // Return null during SSR
   }
 
+  const isPaimentPage = Component === CheckoutPage || Component === Success;
   return (
     <>
       <AuthProvider>
-        <Navbar />
+        {!isPaimentPage && <Navbar />}
 
         <Suspense fallback={<Loading />}>
           <div className="main-container  py-10">
             <Component {...pageProps} />
           </div>
-          <ChatbotContainer />
+          {!isPaimentPage && <ChatbotContainer />}
+
           <Toaster />
         </Suspense>
-        <footer>
-          <Footer />
-        </footer>
+        <footer>{!isPaimentPage && <Footer />}</footer>
       </AuthProvider>
     </>
   );

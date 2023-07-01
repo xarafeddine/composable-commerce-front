@@ -1,18 +1,29 @@
 import AddToCartBtn from "@/components/product/Cart/AddToCartBtn";
 import ImageHandler from "@/components/product/ImageHandler";
 import Card from "@/components/product/card";
-import { getProduct, getRelatedProducts } from "@/lib/client";
+import { getRelatedProducts } from "@/lib/client";
+import useProductsStore from "@/lib/store";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiFillStar,
+  AiOutlineHeart,
+  AiOutlineStar,
+} from "react-icons/ai";
 
 const ProductDetails = () => {
   const router = useRouter();
+  const { addToWishlist, removeFromWishlist, getProduct } = useProductsStore(
+    (state) => state
+  );
   const slug = router.query.slug as string;
   const product = getProduct(slug);
   if (!product) return "product not found";
 
   const relatedProducts = getRelatedProducts(product.category);
+  console.log("this product isin wishlist", product.isInWishlist);
   return (
     <div>
       <div className="product-detail-container">
@@ -30,19 +41,41 @@ const ProductDetails = () => {
                       Array(5 - Math.round(product?.rating.rate))
                         .fill(0)
                         .map((_, index) => (
-                          <AiOutlineStar key={index + product?.rating.rate} />
+                          <AiOutlineStar key={index + product?.rating?.rate!} />
                         ))
                     )
                 : "no review"}
             </div>
           </div>
-          <span>Count {product.rating.count}</span>
+          <span>Count {product.rating?.count}</span>
 
           <p className="price">${product.price}</p>
 
           <h4 className="font-bold">Details: </h4>
           <p>{product.details}</p>
-          <AddToCartBtn productId={product.id} />
+          <div className="flex flex-row gap-10 items-center ">
+            <AddToCartBtn productId={+product.id} />
+            <div className="mt-10">
+              {product.isInWishlist ? (
+                <AiFillHeart
+                  onClick={() => {
+                    removeFromWishlist(+product.id);
+                    toast.remove("removed from wishlist");
+                  }}
+                  size={50}
+                  color="red"
+                />
+              ) : (
+                <AiOutlineHeart
+                  onClick={() => {
+                    addToWishlist(+product.id);
+                    toast.success("Added to cart");
+                  }}
+                  size={50}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

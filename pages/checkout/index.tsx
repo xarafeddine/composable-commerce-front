@@ -15,13 +15,14 @@ type error = {
 };
 
 const CheckoutPage = () => {
-  const {
-    cart,
+  const router = useRouter();
+  const { cart, getTotalQuantities, productsList } = useProductsStore(
+    (state) => state
+  );
 
-    getTotalQuantities,
-    productsList,
-  } = useProductsStore((state) => state);
-
+  if (cart.length === 0) {
+    router.push("/");
+  }
   const totalQuantities = getTotalQuantities();
 
   const cartItems = cart
@@ -45,14 +46,12 @@ const CheckoutPage = () => {
     address: "",
   });
   const [payment, setPayment] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
+    cardNumber: "4539 0522 0984 6891",
+    expiryDate: "7/2029",
+    cvv: "974",
   });
   const [errors, setErrors] = useState<error>({});
   const { data: session } = useSession();
-
-  const router = useRouter();
 
   useEffect(() => {
     const { email, name } = session?.user || {};
@@ -105,29 +104,28 @@ const CheckoutPage = () => {
     <div className="checkout-page">
       <div className="checkout-cart-container">
         <h2>{totalQuantities} Items</h2>
-      <div className="mt-5 ">
+        <div className="mt-5 ">
+          {cartItems.length >= 1 &&
+            cartItems.map((item) => (
+              <div className="cart-item" key={item.productId}>
+                <img
+                  src={item?.image}
+                  className="cart-item-image"
+                  alt={item?.title}
+                />
 
-        {cartItems.length >= 1 &&
-          cartItems.map((item) => (
-            <div className="cart-item" key={item.productId}>
-              <img
-                src={item?.image}
-                className="cart-item-image"
-                alt={item?.title}
-              />
-
-              <div className="cart-item-details">
-                <h3>{item.title}</h3>
-                <p>${(item.price * item.quantity).toFixed(1)}</p>
+                <div className="cart-item-details">
+                  <h3>{item.title}</h3>
+                  <p>${(item.price * item.quantity).toFixed(1)}</p>
+                </div>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
 
         {/* Fake cart items */}
 
         <div className="cart-summary">
-          <h1>Total: ${totalPrice}</h1>
+          <h1 className="text-4xl">Total: ${totalPrice}</h1>
         </div>
       </div>
       <div className="checkout-form">

@@ -16,7 +16,7 @@ export function SignInButton({ children }: { children: React.ReactNode }) {
     return (
       <Link href={`/`}>
         <Image
-          src={session.user?.image ?? "/images/hacker.png"}
+          src={session.user?.image ?? "/images/avatar.png"}
           width={32}
           height={32}
           alt="Your Name"

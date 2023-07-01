@@ -52,10 +52,10 @@ export default async function handler(
           // {
           //   role: "assistant",
           //   content:
-          //     "Welcome to our e-commerce platform I am you chatbot assistant!",
+          //     "Welcome to our e-commerce platform I am your chatbot assistant!",
           // },
-          ...messages,
           // { role: "user", content: message },
+          ...messages,
         ],
       },
       {

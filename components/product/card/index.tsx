@@ -1,5 +1,4 @@
 import { Product } from "@/lib/models";
-import Image from "next/image";
 import Link from "next/link";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 interface Props {
