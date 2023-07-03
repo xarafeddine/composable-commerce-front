@@ -149,7 +149,7 @@ span.text-red {
   padding: 5px;
   font-size: xx-large;
   font-weight: 500;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 113, 34);
 }
 
 .hero-banner-container {
@@ -471,7 +471,6 @@ span.text-red {
   background-color: #f02d34;
 }
 .reviews {
-  padding-left: 5px;
   color: #ffea00;
   margin-top: 0px;
   display: flex;
@@ -493,7 +492,7 @@ span.text-red {
   font-weight: 700;
   font-size: 26px;
   margin-top: 30px;
-  color: #5af02d;
+  color: rgb(0, 113, 34);
 }
 .price .old-price,
 .product-price .old-price,

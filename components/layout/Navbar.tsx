@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <ul className="flex felx-row gap-6 justify-center items-center ">
+      <ul className="flex felx-row gap-8 justify-center items-center ">
         <li className="hover:font-bold">
           <Link href="/">
             <img
@@ -44,7 +44,7 @@ const Navbar = () => {
 
       <form
         // onSubmit={onSubmit}
-        className="relative m-0 flex w-1/4 items-center border border-gray-200 bg-transparent p-0 dark:border-gray-500"
+        className="relative hidden m-0  w-1/4 min-[712px]:flex items-center border border-gray-200 bg-transparent p-0 dark:border-gray-500"
       >
         <input
           type="text"

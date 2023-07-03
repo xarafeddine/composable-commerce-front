@@ -77,7 +77,7 @@ const ProductsPage = () => {
   return (
     <div className={styles["products-list"]}>
       <div className={styles["filters"]}>
-        <h2 className="font-bold text-lg">Filters:</h2>
+        <h2 className=" text-2xl text-center">Filters</h2>
 
         <div className={styles["filter-group"]}>
           <label>Search:</label>
@@ -141,7 +141,7 @@ const ProductsPage = () => {
         </div>
       </div>
       <div className={styles["products"]}>
-        <h2 className="font-bold text-lg">Products List</h2>
+        <h2 className=" text-2xl text-center">Products List</h2>
         <Suspense fallback={<Loading />}>
           <ProductsList products={filteredProducts} />
         </Suspense>

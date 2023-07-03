@@ -41,7 +41,7 @@ const Wishlist = () => {
         <div className="product-container">
           {wishlistItems.length >= 1 &&
             wishlistItems.map((item) => (
-              <div className="product" key={item.productId}>
+              <div className="product items-center" key={item.productId}>
                 <img
                   src={item?.image}
                   className="cart-product-image"
@@ -53,8 +53,6 @@ const Wishlist = () => {
                       <Link href={`/product/${item.slug}`}>{item.title}</Link>
                     </h5>
                     <h4 className="text-green-500">${item.price.toFixed(1)}</h4>
-                  </div>
-                  <div className="flex bottom">
                     <button
                       type="button"
                       className="remove-item"
@@ -63,6 +61,7 @@ const Wishlist = () => {
                       <TiDeleteOutline />
                     </button>
                   </div>
+                  <div className="flex bottom"></div>
                 </div>
               </div>
             ))}

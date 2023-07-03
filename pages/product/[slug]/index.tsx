@@ -30,9 +30,11 @@ const ProductDetails = () => {
         <ImageHandler product={product} />
 
         <div className="product-detail-desc w-fit">
-          <h1 className="font-bold text-4xl">{product?.title}</h1>
+          <h1 className="font-bold text-4xl mb-5">{product?.title}</h1>
+
+          <h4 className="font-bold">Rating: </h4>
           <div className="reviews">
-            <div className="flex flex-row">
+            <div className="flex flex-row items-center">
               {product?.rating
                 ? Array(Math.round(product?.rating.rate))
                     .fill(0)
@@ -45,9 +47,11 @@ const ProductDetails = () => {
                         ))
                     )
                 : "no review"}
+              <span className="ml-2 text-black ">
+                ({product.rating?.count})
+              </span>
             </div>
           </div>
-          <span>Count {product.rating?.count}</span>
 
           <p className="price">${product.price}</p>
 

@@ -93,7 +93,7 @@ const Cart = () => {
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.title}</h5>
-                    <h4 className="text-green-500">
+                    <h4 className="text-green-900">
                       ${(item.price * item.quantity).toFixed(1)}
                     </h4>
                   </div>

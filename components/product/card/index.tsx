@@ -19,7 +19,7 @@ const Card = ({ product: { image, title, slug, price, rating } }: Props) => {
           />
 
           <p className="product-name">{title}</p>
-          <div className="reviews">
+          <div className="reviews ml-1">
             <div className="flex flex-row">
               {rating
                 ? Array(Math.round(rating.rate))
